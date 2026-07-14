@@ -1,0 +1,53 @@
+{
+  "$comment": "aicu.jp/policy に公開する文書のマニフェスト。app-aicujp の scripts/fetch-policies.mjs がビルド時に参照する。",
+  "repo": "aicuai/aicu-japan-policy",
+  "branch": "main",
+  "basePath": "/policy",
+  "policies": [
+    {
+      "file": "media-policy.md",
+      "slug": "media-policy",
+      "title": "AICUメディアポリシー / AICU Media Policy (v.2026)"
+    },
+    {
+      "file": "privacy-policy-ja.md",
+      "slug": "privacy",
+      "title": "プライバシーポリシー / Privacy Policy"
+    },
+    {
+      "file": "creative-ai-creator-shigusa.md",
+      "slug": "shigusa",
+      "title": "生成AIクリエイター仕草（v.2026.7）"
+    },
+    {
+      "file": "creative-ai-creator-conduct.md",
+      "slug": "conduct",
+      "title": "Creative AI Creator's Code of Conduct: Shigusa (v.2026.7)"
+    },
+    {
+      "file": "semi-mandate-basic-terms-ja.md",
+      "slug": "aidx-terms",
+      "title": "AICU AIDX Lab 業務案件基本条件（準委任契約の場合・案）"
+    },
+    {
+      "file": "order-form-special-terms-ja.md",
+      "slug": "order-form-terms",
+      "title": "個別注文書・特約記載例（準委任契約の場合・案）"
+    },
+    {
+      "file": "disclaimer-ja.md",
+      "slug": "disclaimer",
+      "title": "免責事項"
+    },
+    {
+      "file": "glossary-ja.md",
+      "slug": "glossary",
+      "title": "用語集"
+    },
+    {
+      "file": "LICENSE.md",
+      "slug": "license",
+      "title": "利用条件"
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+name: Notify aicu.jp deploy
+
+# main への push 時に app-aicujp の deploy ワークフローを起動し、
+# aicu.jp/policy へ最新のポリシー文書を反映する。
+# 必要な secret: AICUJP_DISPATCH_TOKEN
+#   （aicuai/app-aicujp に対する Contents: Read and write 権限の fine-grained PAT）
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Trigger app-aicujp deploy
+        env:
+          TOKEN: ${{ secrets.AICUJP_DISPATCH_TOKEN }}
+        run: |
+          if [ -z "$TOKEN" ]; then
+            echo "::warning::AICUJP_DISPATCH_TOKEN が未設定のため repository_dispatch をスキップしました"
+            exit 0
+          fi
+          curl -sf -X POST \
+            -H "Authorization: Bearer $TOKEN" \
+            -H "Accept: application/vnd.github+json" \
+            https://api.github.com/repos/aicuai/app-aicujp/dispatches \
+            -d '{"event_type":"policy-updated"}'
