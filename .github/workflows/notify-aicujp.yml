@@ -2,8 +2,14 @@ name: Notify aicu.jp deploy
 
 # main への push 時に app-aicujp の deploy ワークフローを起動し、
 # aicu.jp/policy へ最新のポリシー文書を反映する。
-# 必要な secret: AICUJP_DISPATCH_TOKEN
-#   （aicuai/app-aicujp に対する Contents: Read and write 権限の fine-grained PAT）
+#
+# トークンは Org secret の AICUAI_PAT を優先利用する（aicuai/app-aicujp への
+# repository_dispatch には Contents:write もしくは classic の repo スコープが必要）。
+# 専用トークン AICUJP_DISPATCH_TOKEN があればそちらを優先する。
+#
+# 注意: aicu-japan-policy は public リポジトリのため、Org secret の
+# アクセスポリシーが "Private repositories" のままだと参照できない。
+# その場合は該当 secret の Repository access に本リポジトリを追加する必要がある。
 
 on:
   push:
@@ -15,14 +21,20 @@ jobs:
     steps:
       - name: Trigger app-aicujp deploy
         env:
-          TOKEN: ${{ secrets.AICUJP_DISPATCH_TOKEN }}
+          TOKEN: ${{ secrets.AICUJP_DISPATCH_TOKEN || secrets.AICUAI_PAT }}
         run: |
           if [ -z "$TOKEN" ]; then
-            echo "::warning::AICUJP_DISPATCH_TOKEN が未設定のため repository_dispatch をスキップしました"
+            echo "::warning::dispatch 用トークンが未設定/未参照のためスキップしました（Org secret のアクセスポリシーを確認）"
             exit 0
           fi
-          curl -sf -X POST \
+          CODE=$(curl -s -o /tmp/resp.txt -w "%{http_code}" -X POST \
             -H "Authorization: Bearer $TOKEN" \
             -H "Accept: application/vnd.github+json" \
             https://api.github.com/repos/aicuai/app-aicujp/dispatches \
-            -d '{"event_type":"policy-updated"}'
+            -d '{"event_type":"policy-updated"}')
+          if [ "$CODE" = "204" ]; then
+            echo "✅ app-aicujp へ repository_dispatch (policy-updated) を送信しました"
+          else
+            echo "::warning::dispatch 失敗 (HTTP $CODE)。トークンのスコープ不足の可能性。応答: $(cat /tmp/resp.txt)"
+            exit 1
+          fi
