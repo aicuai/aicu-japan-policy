@@ -48,6 +48,76 @@
       "file": "LICENSE.md",
       "slug": "license",
       "title": "利用条件"
+    },
+    {
+      "file": "commercial-act-ja.md",
+      "slug": "commercial-act",
+      "title": "特定商取引法に基づく表記"
+    },
+    {
+      "file": "refund-policy-ja.md",
+      "slug": "refund",
+      "title": "返金ポリシー（日本）"
+    },
+    {
+      "file": "terms-index-ja.md",
+      "slug": "terms",
+      "title": "利用規約（目次）"
+    },
+    {
+      "file": "terms-legal-ja.md",
+      "slug": "legal",
+      "title": "法的免責事項・利用条件"
+    },
+    {
+      "file": "terms-plan-free-ja.md",
+      "slug": "plan-free",
+      "title": "無料AICU会員(Free)プランポリシー"
+    },
+    {
+      "file": "terms-plan-labplus-ja.md",
+      "slug": "plan-labplus",
+      "title": "AICU Lab+ 会員規約・特約"
+    },
+    {
+      "file": "terms-rental-ja.md",
+      "slug": "rental",
+      "title": "AIレンタルプラン約款 v1.2"
+    },
+    {
+      "file": "terms-aicuty-guideline.md",
+      "slug": "aicuty-guideline",
+      "title": "AiCuty キャラクター利用ガイドライン"
+    },
+    {
+      "file": "terms-thcl25.md",
+      "slug": "thcl25",
+      "title": "技術書典25 限定コンテンツ利用条件"
+    },
+    {
+      "file": "terms-apache2.md",
+      "slug": "apache2",
+      "title": "モデルライセンス: Apache-2.0"
+    },
+    {
+      "file": "terms-model-betamina.md",
+      "slug": "comfyui-betamina",
+      "title": "モデルライセンス: BetaMina"
+    },
+    {
+      "file": "terms-model-faipl.md",
+      "slug": "comfyui-faipl",
+      "title": "モデルライセンス: FAIPL"
+    },
+    {
+      "file": "terms-model-realvisxl-v5.md",
+      "slug": "comfyui-realvisxl-v5",
+      "title": "モデルライセンス: RealVisXL V5"
+    },
+    {
+      "file": "accessibility-statement.md",
+      "slug": "accessibility",
+      "title": "アクセシビリティに関する声明"
     }
   ]
 }
