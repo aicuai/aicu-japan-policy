@@ -1,6 +1,6 @@
 # Creative AI Creator's Code of Conduct: Shigusa (v.2026.7)
 
-This document organizes the theories, techniques, environments, legal considerations, ethics, guidelines, checklists, risk management, and organizational practices for creating character designs with generative AI into a practical set of creator behaviors: **Creative AI Creator Shigusa**.
+This document brings together practical principles concerning creative practice, technology, legal considerations, ethics, risk management, and organizational practices in the age of generative AI, and expresses them as a set of creator behaviors: Creative AI Creator Shigusa. https://j.aicu.ai/moral
 
 **Shigusa** refers to the gestures, attitudes, bearing, and conduct that appear when a person does something. Some gestures are deliberate. Others appear unconsciously. Like the physical presence of an actor, shigusa reveals what a person values.
 
