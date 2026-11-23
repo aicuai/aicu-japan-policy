@@ -1,0 +1,44 @@
+name: Lint bold markers
+
+# 公開する文書を aicu.jp と同じ変換器（marked）に通し、太字の記号 ** がそのまま画面に残らないかを確かめる。
+#
+# 日本語では「**…（補足）**を」「**…ます。**その」のように、太字の閉じ記号の直前が句読点や括弧で、
+# 直後に文字が続くと、Markdown の規則で太字にならず ** がそのまま表示される。
+# 2026-11-23、AISA 利用規約の「**外部監査証明書（cert.aicu.ai 発行）**を」が公開ページにそのまま出ていた。
+# 直し方: 太字の範囲を句読点・括弧の内側に収める（例: **外部監査証明書**（cert.aicu.ai 発行）を）。
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: 変換後に ** が残っていないか
+        run: |
+          npm install --no-save --silent marked@17.0.3
+          cat > /tmp/lint-bold.mjs <<'EOF'
+          import { marked } from 'marked';
+          import { readFileSync } from 'node:fs';
+          const man = JSON.parse(readFileSync('publish.json', 'utf8'));
+          let bad = 0;
+          for (const p of man.policies) {
+            const html = marked.parse(readFileSync(p.file, 'utf8')).replace(/<code[\s\S]*?<\/code>/g, '');
+            for (const h of html.match(/[^\n]{0,30}\*\*[^\n]{0,30}/g) || []) {
+              bad += 1;
+              console.log(`::error file=${p.file}::太字の記号 ** が画面に残ります: …${h.replace(/<[^>]+>/g, '')}…`);
+            }
+          }
+          if (bad) { console.log(`${bad} 箇所。太字の範囲を句読点・括弧の内側に収めてください。`); process.exit(1); }
+          console.log(`ok: ${man.policies.length} 文書とも ** の残りなし`);
+          EOF
+          cp /tmp/lint-bold.mjs ./.lint-bold.mjs && node ./.lint-bold.mjs
