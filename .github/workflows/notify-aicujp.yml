@@ -23,9 +23,11 @@ jobs:
         env:
           TOKEN: ${{ secrets.AICUJP_DISPATCH_TOKEN || secrets.AICUAI_PAT }}
         run: |
+          # トークンが読めないときは「成功」にしない。2026-11-23 まで exit 0 で黙って通り、
+          # マージした規約（/policy/aisa）が公開されないまま誰も気づかなかった。
           if [ -z "$TOKEN" ]; then
-            echo "::warning::dispatch 用トークンが未設定/未参照のためスキップしました（Org secret のアクセスポリシーを確認）"
-            exit 0
+            echo "::error::dispatch 用トークンが読めないため、aicu.jp/policy は更新されていません。今すぐ出すには: gh workflow run deploy.yml --repo aicuai/app-aicujp --ref main ／ 恒久対策: Org secret AICUAI_PAT の Repository access に aicu-japan-policy を足すか、このリポジトリに AICUJP_DISPATCH_TOKEN を置く"
+            exit 1
           fi
           CODE=$(curl -s -o /tmp/resp.txt -w "%{http_code}" -X POST \
             -H "Authorization: Bearer $TOKEN" \
