@@ -118,6 +118,11 @@
       "file": "accessibility-statement.md",
       "slug": "accessibility",
       "title": "アクセシビリティに関する声明"
+    },
+    {
+      "file": "aisa-terms-ja.md",
+      "slug": "aisa",
+      "title": "AICU AISA（AIセキュリティ外部診断）利用規約（ベータ）"
     }
   ]
 }
