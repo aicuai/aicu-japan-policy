@@ -1,0 +1,65 @@
+name: Check published policies
+
+# publish.json に載せた文書が、実際に https://aicu.jp/policy/<slug>/ で読めるかを確かめる。
+# 「マージした」は「公開された」ではない。2026-10-23 に出した AISA 利用規約の PR は 1 か月マージされず、
+# マージ後も配信の起動が黙ってスキップされ、サービスが案内している規約のページが「見つかりません」のままだった。
+#
+# - 毎日 1 回と、main への push の 10 分後（配信を待ってから）に確かめる
+# - 読めない文書があればジョブを失敗させ、Issue を 1 本立てる（同じ題名の Issue が開いていればコメントを足す）
+# - public リポジトリなので GitHub-hosted runner の利用は無料。待ち時間は push のときの 10 分だけ
+
+on:
+  schedule:
+    - cron: "41 22 * * *"   # 07:41 JST
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: 配信を待つ（push のときだけ）
+        if: github.event_name == 'push'
+        run: sleep 600
+      - name: 公開されているか確かめる
+        id: check
+        run: |
+          BASE="https://aicu.jp$(jq -r '.basePath' publish.json)"
+          FAILED=""
+          while IFS=$'\t' read -r slug title; do
+            url="$BASE/$slug/"
+            code=$(curl -s -L -o /tmp/body.html -w "%{http_code}" --max-time 30 "$url" || echo "000")
+            if [ "$code" != "200" ]; then
+              echo "::error::$url が HTTP $code（$title）"
+              FAILED="$FAILED\n- $url … HTTP $code（$title）"
+            else
+              echo "ok  $url"
+            fi
+          done < <(jq -r '.policies[] | [.slug, .title] | @tsv' publish.json)
+          if [ -n "$FAILED" ]; then
+            { echo "failed<<EOF"; printf '%b\n' "$FAILED"; echo "EOF"; } >> "$GITHUB_OUTPUT"
+            exit 1
+          fi
+      - name: 読めない文書があれば Issue に残す
+        if: failure() && steps.check.outputs.failed != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          FAILED: ${{ steps.check.outputs.failed }}
+        run: |
+          TITLE="公開されていない文書があります（aicu.jp/policy）"
+          BODY=$(printf '%s\n\n%s\n\n%s\n' \
+            "publish.json に載っているのに、次の URL が読めません。" \
+            "$FAILED" \
+            "今すぐ出すには: \`gh workflow run deploy.yml --repo aicuai/app-aicujp --ref main\`（配信の起動は .github/workflows/notify-aicujp.yml。実行: $GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID）")
+          NUM=$(gh issue list --repo "$GITHUB_REPOSITORY" --state open --search "in:title $TITLE" --json number --jq '.[0].number // empty')
+          if [ -n "$NUM" ]; then
+            gh issue comment "$NUM" --repo "$GITHUB_REPOSITORY" --body "$BODY"
+          else
+            gh issue create --repo "$GITHUB_REPOSITORY" --title "$TITLE" --body "$BODY"
+          fi
