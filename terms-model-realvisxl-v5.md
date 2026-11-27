@@ -23,5 +23,3 @@ Hires steps: 3
 Upscaler: 4x-NMKD-Superscale-SP_178000_G / 4x-UltraSharp upscaler / or another
 Denoising strength: 0.5
 Upscale by: 1.1-1.5
-Previous
-Next

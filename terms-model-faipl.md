@@ -66,5 +66,3 @@ To generate or disseminate information for the purpose to be used for administra
 Copyright © 2023 The Freedom of Development Project
 Verbatim copying and distribution of this entire article are permitted worldwide, without royalty, in any medium, provided this notice is preserved.
 Disclaimer The content on this site is offered as is, without any warranty at all. The Freedom of Development Project will not be liable to anyone for any damages related to this site, our licenses, and their use. This site does not constitute legal advice.
-Previous
-Next

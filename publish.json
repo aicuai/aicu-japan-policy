@@ -57,7 +57,7 @@
     {
       "file": "refund-policy-ja.md",
       "slug": "refund",
-      "title": "返金ポリシー（日本）"
+      "title": "返金について"
     },
     {
       "file": "terms-index-ja.md",
@@ -122,7 +122,7 @@
     {
       "file": "aisa-terms-ja.md",
       "slug": "aisa",
-      "title": "AICU AISA（AIセキュリティ外部診断）利用規約（ベータ）"
+      "title": "AICU AISA（AIセキュリティ外部診断）利用規約（ベータ版）"
     }
   ]
 }
