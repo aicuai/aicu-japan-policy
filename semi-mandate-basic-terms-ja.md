@@ -1,4 +1,4 @@
-# AICU AIDX Lab 準委任業務標準条件（案）
+# AICU AIDX Lab 業務案件基本条件（準委任契約の場合・案）
 
 本ページへの短縮URL https://j.aicu.ai/AIDXTerms
 

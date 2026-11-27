@@ -8,17 +8,46 @@ AICU AIDX Lab では、お客様、開発者、クリエイティブAI分野の�
 
 ## 主な文書
 
+### 契約・業務条件（AIDX Lab）
+
 - [AICU AIDX Lab 業務案件基本条件（準委任契約の場合・案）](semi-mandate-basic-terms-ja.md)
-- [注文書・個別契約 特約案](order-form-special-terms-ja.md)
-- [Creative AI Creator Shigusa / 生成AIクリエイター仕草（v.2026.7）](creative-ai-creator-shigusa.md)
+- [個別注文書・特約記載例（準委任契約の場合・案）](order-form-special-terms-ja.md)
+- [用語集](glossary-ja.md)
+
+### モラルガイドライン・ポリシー
+
+- [生成AIクリエイター仕草（v.2026.7）](creative-ai-creator-shigusa.md)
 - [Creative AI Creator's Code of Conduct: Shigusa (v.2026.7)](creative-ai-creator-conduct.md)
-- [画像生成AIクリエイター仕草（v.1.0）](creative-ai-creator-shigusa-v2024.md)
-- [Generative AI Creator's Code of Conduct (v.2025 Edition, archived)](creative-ai-creator-conduct-v2025.md)
+- [画像生成AIクリエイター仕草（v.1.0）](creative-ai-creator-shigusa-v2024.md)（旧版）
+- [Generative AI Creator's Code of Conduct (v.2025 Edition, archived)](creative-ai-creator-conduct-v2025.md)（旧版）
 - [AICUメディアポリシー / AICU Media Policy (v.2026)](media-policy.md)（原本: https://corp.aicu.ai/media-policy ）
 - [プライバシーポリシー / Privacy Policy](privacy-policy-ja.md)（原本: https://corp.aicu.ai/ja/privacy ）
+- [アクセシビリティに関する声明](accessibility-statement.md)
+
+### AICU.jp のサービス規約
+
+- [利用規約（目次）](terms-index-ja.md)
+- [法的免責事項・利用条件](terms-legal-ja.md)
+- [特定商取引法に基づく表記](commercial-act-ja.md)
+- [返金について](refund-policy-ja.md)
+- [無料AICU会員(Free)プランポリシー](terms-plan-free-ja.md)
+- [AICU Lab+ 会員規約・特約](terms-plan-labplus-ja.md)
+- [AIレンタルプラン約款 v1.2](terms-rental-ja.md)
+- [AICU AISA（AIセキュリティ外部診断）利用規約（ベータ版）](aisa-terms-ja.md)
+- [AiCuty キャラクター利用ガイドライン](terms-aicuty-guideline.md)
+
+### モデルライセンス・限定コンテンツ
+
+- [モデルライセンス: Apache-2.0](terms-apache2.md)
+- [モデルライセンス: BetaMina](terms-model-betamina.md)
+- [モデルライセンス: FAIPL](terms-model-faipl.md)
+- [モデルライセンス: RealVisXL V5](terms-model-realvisxl-v5.md)
+- [技術書典25 限定コンテンツ利用条件](terms-thcl25.md)
+
+### このリポジトリの利用条件
+
 - [利用条件](LICENSE.md)
 - [免責事項](disclaimer-ja.md)
-- [用語集](glossary-ja.md)
 
 ## aicu.jp/policy への公開
 

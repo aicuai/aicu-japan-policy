@@ -12,5 +12,3 @@ Tencent Hunyuan Community License Agreement 2025
 tencent/HunyuanVideo-1.5
 https://huggingface.co/tencent/HunyuanVideo-1.5
 https://github.com/Tencent-Hunyuan/HunyuanVideo-1.5/blob/main/LICENSE
-Previous
-Next

@@ -20,5 +20,3 @@ https://note.com/aicu/n/na0892c42243b
 ✅ 参考リンク：
 • https://huggingface.co/spaces/CompVis/stable-diffusion-license
 ・BlendAI利用規約 https://blendai.jp/guideline/
-Previous
-Next

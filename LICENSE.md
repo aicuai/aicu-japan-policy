@@ -30,7 +30,7 @@ Creative Commons ライセンスは、文書、ガイドライン、教材、解
 
 現時点では、文書ごとに以下のような分離を想定しています。ただし、正式な利用条件は各ファイルの表示を優先します。
 
-- `creative-ai-creator-shigusa.md`、`creative-ai-creator-conduct.md`、`image-generation-ai-creator-shigusa-v1.md`、`creative-ai-creator-conduct-v2025.md`: Creative Commons 系ライセンスを検討可能
+- `creative-ai-creator-shigusa.md`、`creative-ai-creator-conduct.md`、`creative-ai-creator-shigusa-v2024.md`、`creative-ai-creator-conduct-v2025.md`: Creative Commons 系ライセンスを検討可能
 - `glossary-ja.md`、`disclaimer-ja.md`: Creative Commons 系ライセンスを検討可能
 - `semi-mandate-basic-terms-ja.md`: 原則として All rights reserved 又は個別許諾
 - `order-form-special-terms-ja.md`: 文書ごとに個別判断
